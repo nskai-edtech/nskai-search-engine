@@ -4,10 +4,10 @@
 
 ## Core Value Proposition
 
-* [cite_start]Direct, synthesized answers instead of a list of links[cite: 24].
-* [cite_start]Transparent source citations so users can verify claims[cite: 25].
-* [cite_start]Contextual follow-up: the engine remembers conversation context[cite: 26].
-* [cite_start]Multi-source synthesis: combines information across multiple web pages[cite: 27].
+- [cite_start]Direct, synthesized answers instead of a list of links[cite: 24].
+- [cite_start]Transparent source citations so users can verify claims[cite: 25].
+- [cite_start]Contextual follow-up: the engine remembers conversation context[cite: 26].
+- [cite_start]Multi-source synthesis: combines information across multiple web pages[cite: 27].
 
 ## Architecture & Query Pipeline
 
@@ -24,20 +24,24 @@
 ## Tech Stack
 
 ### Installed Dependencies
-* [cite_start]**Framework:** NextJS + React + Tailwind[cite: 41].
-* **Styling & UI:** Tailwind CSS, `shadcn/ui`, `lucide-react`, `clsx`, `tailwind-merge`.
-* **AI & Streaming:** `@anthropic-ai/sdk`, `ai` (Vercel AI SDK).
-* **Formatting:** Prettier, ESLint.
+
+- [cite_start]**Framework:** NextJS + React + Tailwind[cite: 41].
+- **Styling & UI:** Tailwind CSS, `shadcn/ui`, `lucide-react`, `clsx`, `tailwind-merge`.
+- **AI & Streaming:** `@anthropic-ai/sdk`, `ai` (Vercel AI SDK).
+- **Formatting:** Prettier, ESLint.
 
 ### Planned External Services
-* [cite_start]**LLM Provider:** Claude Haiku 4.5 and Claude Sonnet 4.6[cite: 41].
-* [cite_start]**Search API:** Serper.dev[cite: 41].
-* [cite_start]**Content Extraction:** Jina Reader API[cite: 41].
+
+- [cite_start]**LLM Provider:** Claude Haiku 4.5 and Claude Sonnet 4.6[cite: 41].
+- [cite_start]**Search API:** Serper.dev[cite: 41].
+- [cite_start]**Content Extraction:** Jina Reader API[cite: 41].
 
 ## Getting Started
 
 This project uses `pnpm` for fast, efficient dependency management.
 
 ### 1. Install Dependencies
+
 ```bash
 pnpm install
+```
