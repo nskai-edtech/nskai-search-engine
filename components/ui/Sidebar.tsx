@@ -9,7 +9,6 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* Full-screen overlay — all breakpoints, closes on outside click */}
       {open && <div className="fixed inset-0 z-30" onClick={close} />}
 
       <aside
