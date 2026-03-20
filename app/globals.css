@@ -151,6 +151,25 @@ button:disabled {
   cursor: not-allowed;
 }
 
+/* Theme switch circular reveal */
+::view-transition-old(root) {
+  animation: none;
+}
+
+::view-transition-new(root) {
+  animation: themeReveal 0.5s ease-in;
+  clip-path: circle(0% at var(--vt-x, 50%) var(--vt-y, 50%));
+}
+
+@keyframes themeReveal {
+  from {
+    clip-path: circle(0% at var(--vt-x, 50%) var(--vt-y, 50%));
+  }
+  to {
+    clip-path: circle(var(--vt-r, 150%) at var(--vt-x, 50%) var(--vt-y, 50%));
+  }
+}
+
 @media screen and (max-width: 768px) {
   p {
     font-size: 0.875rem;
