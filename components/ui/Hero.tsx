@@ -31,7 +31,7 @@ export default function Hero() {
       </div>
 
       <a
-        // href="/search"
+        href="/search"
         className="w-fit rounded-full px-6 py-2.5 text-sm font-medium transition-opacity hover:opacity-80"
         style={{ backgroundColor: "var(--accent-primary)", color: "#fff" }}
       >
