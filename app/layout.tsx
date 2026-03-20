@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Syne } from "next/font/google";
 import ThemeProvider from "@/components/ThemeProvider";
+import CursorGlow from "@/components/ui/CursorGlow";
 import "./globals.css";
 
 const syne = Syne({
@@ -19,7 +20,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Perplexity_redone",
+  title: "Rudani",
   description: "An AI-powered search engine",
 };
 
@@ -31,7 +32,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <CursorGlow />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

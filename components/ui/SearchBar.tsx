@@ -3,7 +3,11 @@
 import { useState } from "react";
 import { Search, ArrowRight } from "lucide-react";
 
-const SUGGESTIONS = ["What is RAG?", "How does GPT-4 work?", "Latest AI research"];
+const SUGGESTIONS = [
+  "What is RAG?",
+  "How does GPT-4 work?",
+  "Latest AI research",
+];
 
 export default function SearchBar() {
   const [query, setQuery] = useState("");
@@ -12,7 +16,10 @@ export default function SearchBar() {
     <div className="flex w-full flex-col items-center gap-4">
       <form
         className="flex w-full items-center gap-2 rounded-2xl border px-4 py-3 transition-colors focus-within:border-[var(--accent-primary)]"
-        style={{ backgroundColor: "var(--bg-secondary)", borderColor: "var(--border-strong)" }}
+        style={{
+          backgroundColor: "var(--bg-secondary)",
+          borderColor: "var(--border-strong)",
+        }}
         onSubmit={(e) => e.preventDefault()}
       >
         <Search size={18} style={{ color: "var(--text-tertiary)" }} />
@@ -40,7 +47,10 @@ export default function SearchBar() {
             key={s}
             onClick={() => setQuery(s)}
             className="rounded-full border px-3 py-1 text-xs transition-colors hover:border-[var(--accent-primary)] hover:text-[var(--accent-primary)]"
-            style={{ borderColor: "var(--border)", color: "var(--text-secondary)" }}
+            style={{
+              borderColor: "var(--border)",
+              color: "var(--text-secondary)",
+            }}
           >
             {s}
           </button>

@@ -29,7 +29,9 @@ export default function ThemeToggle() {
       {/* Sun icon */}
       <span
         className="relative z-10 flex h-7 w-7 items-center justify-center rounded-full transition-colors"
-        style={{ color: isDark ? "var(--text-tertiary)" : "var(--accent-primary)" }}
+        style={{
+          color: isDark ? "var(--text-tertiary)" : "var(--accent-primary)",
+        }}
       >
         <Sun size={14} />
       </span>
@@ -37,7 +39,9 @@ export default function ThemeToggle() {
       {/* Moon icon */}
       <span
         className="relative z-10 flex h-7 w-7 items-center justify-center rounded-full transition-colors"
-        style={{ color: isDark ? "var(--accent-primary)" : "var(--text-tertiary)" }}
+        style={{
+          color: isDark ? "var(--accent-primary)" : "var(--text-tertiary)",
+        }}
       >
         <Moon size={14} />
       </span>
