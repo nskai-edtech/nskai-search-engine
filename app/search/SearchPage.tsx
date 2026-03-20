@@ -7,6 +7,7 @@ import Navbar from "@/components/ui/Navbar";
 import SearchInput from "@/components/ui/SearchInput";
 import SourceCard from "@/components/ui/SourceCard";
 import PipelineTrace from "@/components/ui/PipelineTrace";
+import Sidebar from "@/components/ui/Sidebar";
 
 const MOCK_SOURCES = [
   {
@@ -153,6 +154,8 @@ export default function SearchPage() {
       style={{ backgroundColor: "var(--bg)" }}
     >
       <Navbar
+        showSidebarToggle
+        hideThemeToggle
         slot={
           <SearchInput
             initialQuery=""
@@ -163,71 +166,77 @@ export default function SearchPage() {
         }
       />
 
-      <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-6 px-6 py-8">
-        {query && (
-          <h2
-            className="font-sans text-2xl font-semibold tracking-tight animate-in"
-            style={{ color: "var(--text)" }}
-          >
-            {query}
-          </h2>
-        )}
-
-        {/* Pipeline trace — visible as soon as steps are initialised */}
-        {steps.length > 0 && <PipelineTrace steps={steps} />}
-
-        {/* Answer */}
-        {answer && (
-          <div className="flex flex-col gap-3 animate-in">
-            <p
-              className="text-xs font-semibold uppercase tracking-widest"
-              style={{ color: "var(--text-tertiary)" }}
-            >
-              Answer
-            </p>
-            <p
-              className="text-sm leading-relaxed whitespace-pre-wrap"
+      <div className="flex flex-1">
+        <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-6 px-6 py-8">
+          {query && (
+            <h2
+              className="font-sans text-2xl font-semibold tracking-tight animate-in"
               style={{ color: "var(--text)" }}
             >
-              {answer}
-              {loading && (
-                <span
-                  className="ml-0.5 inline-block h-3.5 w-0.5 animate-pulse align-middle"
-                  style={{ backgroundColor: "var(--accent-primary)" }}
-                />
-              )}
-            </p>
-          </div>
-        )}
+              {query}
+            </h2>
+          )}
 
-        {/* Sources */}
-        {sources.length > 0 && (
-          <div className="flex flex-col gap-3 animate-in">
-            <p
-              className="text-xs font-semibold uppercase tracking-widest"
-              style={{ color: "var(--text-tertiary)" }}
-            >
-              Sources
-            </p>
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-              {sources.map((s) => (
-                <SourceCard key={s.index} source={s} />
-              ))}
+          {/* Pipeline trace — visible as soon as steps are initialised */}
+          {steps.length > 0 && <PipelineTrace steps={steps} />}
+
+          {/* Answer */}
+          {answer && (
+            <div className="flex flex-col gap-3 animate-in">
+              <p
+                className="text-xs font-semibold uppercase tracking-widest"
+                style={{ color: "var(--text-tertiary)" }}
+              >
+                Answer
+              </p>
+              <p
+                className="text-sm leading-relaxed whitespace-pre-wrap"
+                style={{ color: "var(--text)" }}
+              >
+                {answer}
+                {loading && (
+                  <span
+                    className="ml-0.5 inline-block h-3.5 w-0.5 animate-pulse align-middle"
+                    style={{ backgroundColor: "var(--accent-primary)" }}
+                  />
+                )}
+              </p>
             </div>
-          </div>
-        )}
+          )}
 
-        {!loading && !hasResults && !query && (
-          <div className="flex flex-1 flex-col items-center justify-center gap-2 text-center">
-            <p className="text-sm font-medium" style={{ color: "var(--text)" }}>
-              What do you want to know?
-            </p>
-            <p className="text-xs" style={{ color: "var(--text-tertiary)" }}>
-              Ask anything above to get a cited answer.
-            </p>
-          </div>
-        )}
-      </main>
+          {/* Sources */}
+          {sources.length > 0 && (
+            <div className="flex flex-col gap-3 animate-in">
+              <p
+                className="text-xs font-semibold uppercase tracking-widest"
+                style={{ color: "var(--text-tertiary)" }}
+              >
+                Sources
+              </p>
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+                {sources.map((s) => (
+                  <SourceCard key={s.index} source={s} />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {!loading && !hasResults && !query && (
+            <div className="flex flex-1 flex-col items-center justify-center gap-2 text-center">
+              <p
+                className="text-sm font-medium"
+                style={{ color: "var(--text)" }}
+              >
+                What do you want to know?
+              </p>
+              <p className="text-xs" style={{ color: "var(--text-tertiary)" }}>
+                Ask anything above to get a cited answer.
+              </p>
+            </div>
+          )}
+        </main>
+        <Sidebar />
+      </div>
     </div>
   );
 }

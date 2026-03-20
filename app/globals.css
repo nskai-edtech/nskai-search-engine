@@ -110,7 +110,7 @@ html {
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 5px;
   height: 8px;
 }
 
@@ -137,6 +137,10 @@ html {
 :focus-visible {
   outline: 2px solid var(--accent-primary);
   outline-offset: 2px;
+}
+
+input:focus-visible {
+  outline: none;
 }
 
 button {

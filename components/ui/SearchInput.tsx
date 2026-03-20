@@ -23,6 +23,7 @@ export default function SearchInput({
   compact,
 }: Props) {
   const [query, setQuery] = useState(initialQuery);
+  const [focused, setFocused] = useState(false);
 
   useEffect(() => {
     setQuery(initialQuery);
@@ -41,12 +42,17 @@ export default function SearchInput({
           e.preventDefault();
           submit(query);
         }}
-        className={`flex w-full items-center gap-2 rounded-2xl border transition-colors focus-within:border-[var(--accent-primary)] ${
+        className={`flex w-full items-center gap-2 rounded-2xl border transition-colors ${
           compact ? "px-3 py-2" : "px-4 py-3"
         }`}
         style={{
           backgroundColor: "var(--bg-secondary)",
-          borderColor: "var(--border-strong)",
+          borderColor: focused
+            ? "var(--accent-primary)"
+            : "var(--border-strong)",
+          boxShadow: focused
+            ? "0 0 0 2px color-mix(in srgb, var(--accent-primary) 20%, transparent)"
+            : "none",
         }}
       >
         <Search
@@ -55,10 +61,11 @@ export default function SearchInput({
           className="shrink-0"
         />
         <input
-          autoFocus
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
           placeholder="Ask anything..."
           className="flex-1 bg-transparent text-sm outline-none placeholder:text-[var(--text-tertiary)]"
           style={{ color: "var(--text)" }}
