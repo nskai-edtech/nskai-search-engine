@@ -28,6 +28,7 @@ export default function ThemeToggle() {
     document.documentElement.style.setProperty("--vt-r", `${maxRadius}px`);
 
     document.startViewTransition(() => {
+      document.documentElement.classList.toggle("dark", !isDark);
       toggleTheme();
     });
   };

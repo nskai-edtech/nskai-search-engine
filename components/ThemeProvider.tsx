@@ -1,17 +1,14 @@
 "use client";
 
+import { useEffect } from "react";
 import { useThemeStore } from "@/lib/store";
 
-export default function ThemeProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function ThemeProvider({ children }: { children: React.ReactNode }) {
   const isDark = useThemeStore((s) => s.isDark);
 
-  return (
-    <div className={isDark ? "dark" : ""} style={{ minHeight: "100vh" }}>
-      {children}
-    </div>
-  );
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", isDark);
+  }, [isDark]);
+
+  return <>{children}</>;
 }
