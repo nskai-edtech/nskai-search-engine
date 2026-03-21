@@ -2,7 +2,7 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:is(.dark, .dark *));
 
 @theme {
   /* Dark surfaces */
@@ -98,9 +98,6 @@
 body {
   font-optical-sizing: auto;
   color: var(--text);
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
 }
 
 html {
@@ -152,13 +149,22 @@ button:disabled {
 }
 
 /* Theme switch circular reveal */
+::view-transition-group(root) {
+  animation-duration: 0s;
+}
+
 ::view-transition-old(root) {
   animation: none;
+  mix-blend-mode: normal;
 }
 
 ::view-transition-new(root) {
   animation: themeReveal 0.5s ease-in;
-  clip-path: circle(0% at var(--vt-x, 50%) var(--vt-y, 50%));
+  mix-blend-mode: normal;
+}
+
+::view-transition-image-pair(root) {
+  isolation: isolate;
 }
 
 @keyframes themeReveal {
@@ -168,6 +174,12 @@ button:disabled {
   to {
     clip-path: circle(var(--vt-r, 150%) at var(--vt-x, 50%) var(--vt-y, 50%));
   }
+}
+
+/* Kill all transitions during view transition to prevent bleed */
+:root:has(::view-transition) * {
+  transition: none !important;
+  animation-duration: 0s !important;
 }
 
 @media screen and (max-width: 768px) {
